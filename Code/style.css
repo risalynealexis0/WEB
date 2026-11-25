@@ -1,0 +1,421 @@
+/* ====== PENGATURAN DASAR ====== */
+:root {
+  --warna-latar: #faf7f2;
+  --warna-teks: #222;
+  --warna-aksen: #c8372d;   /* merah, mengingatkan paruh bengkok */
+  --warna-redup: #6b6b6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--warna-latar);
+  color: var(--warna-teks);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.8;
+  font-size: 1.15rem;
+}
+
+/* ====== GARIS KEMAJUAN BACA ====== */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 0%;
+  background: var(--warna-aksen);
+  z-index: 100;
+}
+
+/* ====== HERO / BAGIAN PEMBUKA ====== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  color: white;
+  /* Nanti ganti dengan fotomu: url("foto/hero.jpg") */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+              #333;
+  background-size: cover;
+  background-position: center;
+}
+
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  color: #ffb4a8;
+  font-family: Arial, sans-serif;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  line-height: 1.15;
+  margin: 0.5rem auto;
+  max-width: 900px;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  max-width: 650px;
+  margin: 1rem auto;
+  font-style: italic;
+}
+
+.byline {
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.scroll-hint {
+  margin-top: 2rem;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  border-bottom: 1px solid white;
+  align-self: center;
+}
+
+/* ====== ISI ARTIKEL ====== */
+.artikel {
+  max-width: 680px;       /* lebar nyaman untuk dibaca */
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.lead {
+  font-size: 1.35rem;
+  font-weight: bold;
+}
+
+.artikel h2 {
+  font-size: 1.9rem;
+  margin-top: 4rem;
+  border-left: 5px solid var(--warna-aksen);
+  padding-left: 1rem;
+}
+
+/* ====== KUTIPAN ====== */
+blockquote {
+  margin: 3rem 0;
+  padding: 1rem 0 1rem 1.5rem;
+  border-left: 4px solid var(--warna-aksen);
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  font-style: normal;
+  color: var(--warna-redup);
+  font-family: Arial, sans-serif;
+}
+
+/* ====== FOTO ====== */
+figure {
+  margin: 3rem -4rem;     /* foto sedikit lebih lebar dari teks */
+}
+
+figure img {
+  width: 100%;
+  display: block;
+}
+
+figcaption {
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--warna-redup);
+  margin: 0.6rem 4rem 0;
+}
+
+/* ====== KOTAK DATA ====== */
+.kotak-data {
+  background: white;
+  border: 1px solid #ddd;
+  border-top: 5px solid var(--warna-aksen);
+  padding: 1.5rem;
+  margin: 3rem 0;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+}
+
+.kotak-data h3 {
+  margin-top: 0;
+}
+
+/* ====== FOOTER ====== */
+footer {
+  background: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+}
+
+/* ====== TAMPILAN HP ====== */
+@media (max-width: 800px) {
+  figure {
+    margin: 2rem 0;
+  }
+  figcaption {
+    margin: 0.6rem 0 0;
+  }
+}
+
+/* ====================================================
+   ANIMASI
+   ==================================================== */
+
+/* Gulir halus saat klik "Mulai membaca" */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---- Animasi pembuka (muncul saat halaman dibuka) ---- */
+@keyframes naik-muncul {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero .kicker,
+.hero h1,
+.hero .subtitle,
+.hero .byline,
+.hero .scroll-hint {
+  opacity: 0;
+  animation: naik-muncul 1s ease-out forwards;
+}
+
+/* Muncul berurutan, satu per satu */
+.hero .kicker      { animation-delay: 0.2s; }
+.hero h1           { animation-delay: 0.6s; }
+.hero .subtitle    { animation-delay: 1.1s; }
+.hero .byline      { animation-delay: 1.5s; }
+.hero .scroll-hint { animation-delay: 2s; }
+
+/* ---- Tulisan "Mulai membaca" bergerak naik-turun ---- */
+@keyframes lompat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+
+.hero .scroll-hint {
+  animation:
+    naik-muncul 1s ease-out 2s forwards,
+    lompat 1.6s ease-in-out 3s infinite;
+}
+
+/* ---- Latar hero bergeser pelan seperti bernapas ---- */
+@keyframes napas {
+  0%   { background-size: 100%; }
+  50%  { background-size: 108%; }
+  100% { background-size: 100%; }
+}
+
+.hero {
+  animation: napas 18s ease-in-out infinite;
+}
+
+/* ---- Muncul saat digulir (kelas "reveal" ditambah oleh script.js) ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.terlihat {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Foto: muncul sambil zoom pelan */
+figure.reveal img {
+  transform: scale(1.08);
+  transition: transform 1.6s ease;
+}
+
+figure.reveal.terlihat img {
+  transform: scale(1);
+}
+
+/* Kutipan: garis merah memanjang dari atas */
+blockquote.reveal {
+  border-left-color: transparent;
+  position: relative;
+}
+
+blockquote.reveal::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 0;
+  background: var(--warna-aksen);
+  transition: height 1.2s ease 0.3s;
+}
+
+blockquote.reveal.terlihat::before {
+  height: 100%;
+}
+
+/* Kotak data: sedikit terangkat saat disentuh kursor */
+.kotak-data {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kotak-data:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ---- Hormati pengguna yang mematikan animasi di perangkatnya ---- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .hero .kicker,
+  .hero h1,
+  .hero .subtitle,
+  .hero .byline,
+  .hero .scroll-hint,
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ====================================================
+   PETA INTERAKTIF
+   ==================================================== */
+
+.peta-blok {
+  margin: 3rem -4rem;     /* sedikit lebih lebar dari teks, seperti foto */
+}
+
+#peta {
+  position: relative;
+  z-index: 0;             /* supaya tidak menimpa garis kemajuan baca */
+  height: 480px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #e8e4dc;
+}
+
+/* Tombol pindah tampilan */
+.peta-kontrol {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  font-family: Arial, sans-serif;
+}
+
+.peta-kontrol button {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--warna-aksen);
+  border-radius: 999px;
+  background: white;
+  color: var(--warna-aksen);
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.peta-kontrol button:hover,
+.peta-kontrol button.aktif {
+  background: var(--warna-aksen);
+  color: white;
+}
+
+.peta-keterangan {
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--warna-redup);
+  margin-top: 0.6rem;
+  line-height: 1.5;
+}
+
+/* Titik berdenyut di peta */
+.titik-wrap {
+  background: none;
+  border: none;
+}
+
+.titik-peta {
+  display: block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--warna-aksen);
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.titik-peta::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--warna-aksen);
+  animation: denyut 2s ease-out infinite;
+}
+
+@keyframes denyut {
+  from { transform: scale(1);   opacity: 0.9; }
+  to   { transform: scale(3.2); opacity: 0; }
+}
+
+/* Sorotan merah wilayah Indonesia (dipasang oleh script.js) */
+.sorotan-indonesia {
+  fill: var(--warna-aksen);
+  fill-opacity: 0;
+  stroke: var(--warna-aksen);
+  stroke-width: 1.5px;
+  stroke-opacity: 0;
+  transition: fill-opacity 1s ease, stroke-opacity 1s ease;
+}
+
+.sorotan-indonesia.menyala {
+  fill-opacity: 0.55;     /* 0 = transparan, 1 = merah pekat */
+  stroke-opacity: 0.95;
+}
+
+/* Gelembung keterangan saat titik diklik */
+.leaflet-popup-content {
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+  .peta-blok {
+    margin: 2rem 0;
+  }
+  #peta {
+    height: 360px;
+  }
+}
