@@ -3,29 +3,164 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paruh Bengkok di Layar Ponsel</title>
-  <!-- CSS peta (Leaflet) -->
+  <title>Paruh Bengkok di Layar Ponsel — Arsip Gelap Perdagangan Satwa Jabodetabek</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Garis kemajuan baca di bagian atas layar -->
-  <div id="progress-bar"></div>
+  <!-- Garis kemajuan baca -->
+  <div id="progress-bar" aria-hidden="true"></div>
 
-  <!-- BAGIAN PEMBUKA (HERO) -->
-  <header class="hero">
-    <p class="kicker">Longform</p>
-    <h1>Paruh Bengkok di Layar Ponsel</h1>
-    <p class="subtitle">
-      Penelusuran Perdagangan Burung Paruh Bengkok lewat Media Sosial di Jabodetabek.
-    </p>
-    <p class="byline">Oleh [Risalyne Alexis] · [Tanggal Terbit]</p>
-    <a href="#isi" class="scroll-hint">Mulai membaca ↓</a>
+  <!-- Tekstur grain halus untuk nuansa dokumenter gelap -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- HEADER & NAVIGASI GLOBAL (Gaya Ensiklopedia Animalia + Tema Investigasi) -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="#top" class="brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">PARUH BENGKOK <span class="brand-sub"></span></span>
+      </a>
+
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input
+          type="search"
+          id="search-species"
+          placeholder="Cari spesies, nama latin, atau modus..."
+          aria-label="Cari spesies burung paruh bengkok"
+        >
+      </div>
+
+      <nav class="topnav" aria-label="Navigasi utama">
+        <a href="#arsip-spesies">Spesies</a>
+        <a href="#peta-seksi">Peta</a>
+        <a href="#investigasi">Laporan</a>
+        <a href="#hukum">Hukum</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- ISI ARTIKEL -->
-  <main id="isi" class="artikel">
+  <!-- HERO: PEMBUKA MENCEKAM -->
+  <section id="top" class="hero">
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="dossier-tag">
+        <span class="pulse-badge" aria-hidden="true"></span>
+         INVESTIGASI SATWA LIAR · JABODETABEK
+      </div>
+      <h1>Paruh Bengkok di Layar Ponsel</h1>
+      <p class="subtitle">
+        Di balik layar ponsel dan grup tertutup media sosial, satwa endemik Indonesia yang dilindungi berpindah tangan dalam hitungan menit—dari hutan timur menuju sangkar beton Jabodetabek.
+      </p>
+
+      <div class="hero-metrics" aria-label="Ringkasan temuan">
+        <div class="metric-item">
+          <span class="metric-val">06</span>
+          <span class="metric-lbl">Spesies Prioritas</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-val">05</span>
+          <span class="metric-lbl">Titik Jabodetabek</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-val danger">UU 5/1990</span>
+          <span class="metric-lbl">Status Dilindungi</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-val danger">AKTIF</span>
+          <span class="metric-lbl">Transaksi Daring</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#arsip-spesies" class="btn-primary">Jelajahi Arsip Spesies</a>
+        <a href="#investigasi" class="btn-ghost">Baca Laporan Lengkap ↓</a>
+      </div>
+      <p class="byline">Oleh [Risalyne Alexis] · [Tanggal Terbit] · Liputan Khusus</p>
+    </div>
+  </section>
+
+  <!-- BAGIAN 1: ENSIKLOPEDIA SPESIES TERANCAM (Gaya Animalia.bio Gelap) -->
+  <section id="arsip-spesies" class="encyclopedia-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="section-kicker">BASIS DATA KONSERVASI &amp; PERDAGANGAN GELAP</p>
+          <h2>Ensiklopedia Spesies yang Diperdagangkan</h2>
+          <p class="section-desc">
+            Klik setiap kartu untuk membuka berkas lengkap spesies: status keterancaman IUCN, asal habitat, estimasi harga pasar gelap, hingga modus transaksi di media sosial Jabodetabek.
+          </p>
+        </div>
+        <div class="result-counter" id="species-count" aria-live="polite">
+          Menampilkan 6 dari 6 spesies
+        </div>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <div class="filter-group" role="group" aria-label="Filter status IUCN">
+          <span class="filter-label">Status IUCN:</span>
+          <button type="button" class="filter-pill aktif" data-filter-status="all">Semua</button>
+          <button type="button" class="filter-pill" data-filter-status="CR">Kritis (CR)</button>
+          <button type="button" class="filter-pill" data-filter-status="EN">Terancam (EN)</button>
+          <button type="button" class="filter-pill" data-filter-status="VU">Rentan (VU)</button>
+          <button type="button" class="filter-pill" data-filter-status="LC">Risiko Rendah (LC)</button>
+        </div>
+
+        <div class="filter-group" role="group" aria-label="Filter platform perdagangan">
+          <span class="filter-label">Platform:</span>
+          <button type="button" class="filter-pill aktif" data-filter-platform="all">Semua</button>
+          <button type="button" class="filter-pill" data-filter-platform="Facebook">Facebook</button>
+          <button type="button" class="filter-pill" data-filter-platform="WhatsApp">WhatsApp</button>
+          <button type="button" class="filter-pill" data-filter-platform="Instagram">Instagram</button>
+        </div>
+      </div>
+
+      <!-- Grid Kartu Spesies -->
+      <div id="species-grid" class="species-grid"></div>
+    </div>
+  </section>
+
+  <!-- BAGIAN 2: PETA INTERAKTIF RANTAI PASOK & JABODETABEK -->
+  <section id="peta-seksi" class="map-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="section-kicker">JEJAK GEOGRAFIS &amp; RANTAI PASOK</p>
+          <h2>Dari Hutan Timur ke Layar Ponsel Jabodetabek</h2>
+          <p class="section-desc">
+            Peta ini memetakan titik simpul penawaran dan transaksi COD di wilayah Jabodetabek, serta menyoroti cakupan wilayah asal satwa di Indonesia. Klik titik merah untuk melihat catatan lapangan.
+          </p>
+        </div>
+      </div>
+
+      <div class="peta-blok">
+        <div class="peta-kontrol">
+          <button type="button" id="btn-indonesia" class="aktif">Seluruh Indonesia</button>
+          <button type="button" id="btn-jabodetabek">Fokus Jabodetabek</button>
+        </div>
+        <div id="peta" role="img" aria-label="Peta Indonesia dengan titik wilayah Jabodetabek"></div>
+        <div class="peta-keterangan">
+          [Keterangan peta: apa yang ditunjukkan titik-titik ini dan dari mana datanya. Klik titik untuk melihat catatan.]
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAGIAN 3: LAPORAN INVESTIGASI LONGFORM -->
+  <main id="investigasi" class="artikel">
+
+    <div class="chapter-divider">
+      <span>DOKUMEN LAPORAN UTAMA</span>
+    </div>
 
     <!-- Paragraf pembuka / lead -->
     <p class="lead">
@@ -50,10 +185,10 @@
       <cite>— Nama narasumber, jabatan/peran</cite>
     </blockquote>
 
-    <!-- Foto dengan keterangan -->
+    <!-- Foto burung paruh bengkok setelah kutipan narasumber -->
     <figure>
-      <img src="https://placehold.co/900x500?text=Ganti+dengan+fotomu" alt="Deskripsi foto">
-      <figcaption>[Keterangan foto. Siapa/apa, di mana, kapan, dan nama fotografer.]</figcaption>
+      <img src="../Foto/burung-paruh-bengkok.jpg" alt="Burung paruh bengkok Kakatua Jambul Kuning (Cacatua sulphurea) di balik jeruji kandang">
+      <figcaption>Kakatua Jambul Kuning (Cacatua sulphurea) di balik jeruji besi—salah satu spesies paruh bengkok berstatus Kritis (CR) yang kerap diperdagangkan secara ilegal. (Sumber: Wikimedia Commons)</figcaption>
     </figure>
 
     <h2>Bab 2: Dari Hutan ke Jabodetabek</h2>
@@ -61,22 +196,16 @@
       [Telusuri rantai pasok: asal burung, pengepul, pengiriman.]
     </p>
 
-    <!-- PETA INTERAKTIF -->
-    <div class="peta-blok">
-      <div class="peta-kontrol">
-        <button type="button" id="btn-indonesia" class="aktif">Seluruh Indonesia</button>
-        <button type="button" id="btn-jabodetabek">Jabodetabek</button>
-      </div>
-      <div id="peta" role="img" aria-label="Peta Indonesia dengan titik wilayah Jabodetabek"></div>
-      <div class="peta-keterangan">
-        [Keterangan peta: apa yang ditunjukkan titik-titik ini dan dari mana datanya.
-        Klik titik untuk melihat catatan.]
-      </div>
-    </div>
-
     <!-- Kotak data / fakta penting -->
     <aside class="kotak-data">
-      <h3>Data Singkat</h3>
+      <h3>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+          <line x1="12" y1="9" x2="12" y2="13"></line>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        Data Singkat Temuan Lapangan
+      </h3>
       <ul>
         <li>[Angka 1 + sumbernya]</li>
         <li>[Angka 2 + sumbernya]</li>
@@ -84,7 +213,7 @@
       </ul>
     </aside>
 
-    <h2>Bab 3: Hukum dan Penegakannya</h2>
+    <h2 id="hukum">Bab 3: Hukum dan Penegakannya</h2>
     <p>
       [Jelaskan aturan yang berlaku, dan tanggapan pihak berwenang.
       Pastikan nama undang-undang dan pasalnya kamu verifikasi dari sumber resmi.]
@@ -97,13 +226,29 @@
 
   </main>
 
+  <!-- MODAL BERKAS SPESIES (Detail Profil ala Animalia.bio) -->
+  <div id="species-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-panel">
+      <button type="button" id="modal-close" class="modal-close" aria-label="Tutup berkas spesies">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
-    <p>Liputan ini dibuat oleh [Nama Kamu] · [Kampus / Media]</p>
-    <p class="catatan">Metode reportase dan daftar sumber: [tambahkan di sini]</p>
+    <div class="footer-inner">
+      <p class="footer-brand">PARUH BENGKOK // ARSIP GELAP JABODETABEK</p>
+      <p>Liputan ini dibuat oleh [Risalyne Alexis] · [Kampus / Media]</p>
+      <p class="catatan">Metode reportase dan daftar sumber: [tambahkan di sini]. Seluruh titik peta hanya menampilkan tingkat kota/wilayah demi keamanan sumber.</p>
+    </div>
   </footer>
 
-  <!-- JavaScript peta (Leaflet) harus dimuat sebelum script.js -->
+  <!-- JavaScript peta (Leaflet) -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
 </body>
