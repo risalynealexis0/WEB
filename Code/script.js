@@ -306,7 +306,7 @@ renderSpecies();
 // ====== BAB 1 BLUE SHOWCASE TABS (Ala WooRank) ======
 var BAB1_DATA = {
   etalase: {
-    code: "LOG-FB-IG // ETALASE",
+    code: "ETALASE",
     status: "TERDETEKSI AKTIF",
     title: "Simulasi Unggahan di Grup Tertutup",
     rows: [
@@ -319,7 +319,7 @@ var BAB1_DATA = {
     footRight: "Estimasi jangkauan: 1.200+ anggota grup"
   },
   sandi: {
-    code: "LOG-LEXICON // SANDI",
+    code: "SANDI",
     status: "KODE SAMARAN",
     title: "Kamus Istilah Pasar Gelap Daring",
     rows: [
@@ -382,22 +382,22 @@ renderBab1Tab("etalase");
 // ====== KUTIPAN NARASUMBER: TUMPUKAN KARTU & ANIMASI KOCOK ======
 var DATA_NARSUM = [
   {
-    kicker: "KESAKSIAN NARASUMBER // 01",
-    quote: "“[Kutipan narasumber pertama yang paling kuat ditaruh di sini.]”",
+    kicker: "NARASUMBER #01",
+    quote: "“[Bagian kutipan narasumber pertama.]”",
     cite: "— Nama Narasumber 1, Aktivis Konservasi Satwa Liar",
     foto: "../Foto/narsum-siluet.svg",
     alt: "Foto Narasumber 1"
   },
   {
-    kicker: "KESAKSIAN NARASUMBER // 02",
-    quote: "“[Kutipan narasumber kedua: misalnya pengakuan soal jalur pengiriman atau pola transaksi media sosial.]”",
+    kicker: "NARASUMBER #02",
+    quote: "“[Bagian kutipan narasumber kedua.]”",
     cite: "— Nama Narasumber 2, Peneliti / Pengamat Perdagangan Satwa",
     foto: "../Foto/narsum-siluet.svg",
     alt: "Foto Narasumber 2"
   },
   {
-    kicker: "KESAKSIAN NARASUMBER // 03",
-    quote: "“[Kutipan narasumber ketiga: misalnya tanggapan aparat atau petugas karantina/BKSDA.]”",
+    kicker: "NARASUMBER #03",
+    quote: "“[Bagian kutipan narasumber ketiga.]”",
     cite: "— Nama Narasumber 3, Pihak Berwenang / BKSDA",
     foto: "../Foto/narsum-siluet.svg",
     alt: "Foto Narasumber 3"

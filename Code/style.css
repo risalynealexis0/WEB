@@ -189,9 +189,11 @@ body {
   justify-content: center;
   padding: 5rem 1.5rem 4rem;
   text-align: center;
+  background-color: var(--bg-void);
   background-image: url("../Foto/burung-paruh-bengkok.jpg");
   background-size: cover;
   background-position: center 25%;
+  background-clip: padding-box;
   overflow: hidden;
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -200,8 +202,8 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 35%, rgba(127, 29, 29, 0.28) 0%, rgba(7, 7, 9, 0.86) 65%, rgba(7, 7, 9, 0.98) 100%),
-    linear-gradient(180deg, rgba(7, 7, 9, 0.72) 0%, rgba(7, 7, 9, 0.55) 45%, var(--bg-void) 100%);
+    radial-gradient(circle at 50% 35%, rgba(127, 29, 29, 0.28) 0%, rgba(7, 7, 9, 0.86) 65%, var(--bg-void) 100%),
+    linear-gradient(180deg, rgba(7, 7, 9, 0.72) 0%, rgba(7, 7, 9, 0.55) 45%, var(--bg-void) 96%, var(--bg-void) 100%);
   z-index: 1;
 }
 
