@@ -194,6 +194,7 @@ document.querySelectorAll("[data-filter-status]").forEach(function (btn) {
     btn.classList.add("aktif");
     filterStatus = btn.getAttribute("data-filter-status");
     renderSpecies();
+
   });
 });
 
@@ -205,6 +206,7 @@ document.querySelectorAll("[data-filter-platform]").forEach(function (btn) {
     btn.classList.add("aktif");
     filterPlatform = btn.getAttribute("data-filter-platform");
     renderSpecies();
+
   });
 });
 
@@ -212,6 +214,7 @@ if (searchEl) {
   searchEl.addEventListener("input", function (e) {
     searchQuery = e.target.value;
     renderSpecies();
+
   });
 }
 
@@ -299,6 +302,172 @@ document.addEventListener("keydown", function (e) {
 });
 
 renderSpecies();
+
+// ====== BAB 1 BLUE SHOWCASE TABS (Ala WooRank) ======
+var BAB1_DATA = {
+  etalase: {
+    code: "LOG-FB-IG // ETALASE",
+    status: "TERDETEKSI AKTIF",
+    title: "Simulasi Unggahan di Grup Tertutup",
+    rows: [
+      { k: "Judul Unggahan", v: "\"Ready JK jinak rawatan lama\"" },
+      { k: "Kanal Utama", v: "Grup Jual Beli Burung & Reels IG" },
+      { k: "Titik Lokasi", v: "Jakarta Timur · Bekasi · Depok" },
+      { k: "Dokumen SATS-DN", v: "Tidak Dilampirkan (Ilegal)" }
+    ],
+    footLeft: "Moderasi platform: Lolos filter teks",
+    footRight: "Estimasi jangkauan: 1.200+ anggota grup"
+  },
+  sandi: {
+    code: "LOG-LEXICON // SANDI",
+    status: "KODE SAMARAN",
+    title: "Kamus Istilah Pasar Gelap Daring",
+    rows: [
+      { k: "\"JK / Jambul\"", v: "Kakatua Jambul Kuning (CR)" },
+      { k: "\"Mahar / Adopsi\"", v: "Harga jual beli satwa" },
+      { k: "\"Lolohan\"", v: "Anakan hasil rampasan sarang" },
+      { k: "\"Japri / WA\"", v: "Alihkan negosiasi ke jalur privat" }
+    ],
+    footLeft: "Tujuan: Hindari deteksi kata kunci terlarang",
+    footRight: "Pembaruan istilah: Berkala"
+  }
+};
+
+var bab1MockupEl = document.getElementById("bab1-mockup-panel");
+
+function renderBab1Tab(key) {
+  var item = BAB1_DATA[key];
+  if (!item || !bab1MockupEl) return;
+
+  bab1MockupEl.innerHTML =
+    '<div class="mockup-topbar">' +
+      '<span>' + item.code + '</span>' +
+      '<span class="mockup-status">' + item.status + '</span>' +
+    '</div>' +
+    '<div class="mockup-body">' +
+      '<h4>' + item.title + '</h4>' +
+      '<div class="mockup-list">' +
+        item.rows
+          .map(function (r) {
+            return (
+              '<div class="mockup-row">' +
+                '<span class="k">' + r.k + '</span>' +
+                '<span class="v">' + r.v + '</span>' +
+              '</div>'
+            );
+          })
+          .join("") +
+      '</div>' +
+    '</div>' +
+    '<div class="mockup-foot">' +
+      '<span>' + item.footLeft + '</span>' +
+      '<span>' + item.footRight + '</span>' +
+    '</div>';
+}
+
+document.querySelectorAll("[data-bab1-tab]").forEach(function (tabBtn) {
+  tabBtn.addEventListener("click", function () {
+    document.querySelectorAll("[data-bab1-tab]").forEach(function (b) {
+      b.classList.remove("aktif");
+      b.setAttribute("aria-selected", "false");
+    });
+    tabBtn.classList.add("aktif");
+    tabBtn.setAttribute("aria-selected", "true");
+    renderBab1Tab(tabBtn.getAttribute("data-bab1-tab"));
+  });
+});
+
+renderBab1Tab("etalase");
+
+// ====== KUTIPAN NARASUMBER: TUMPUKAN KARTU & ANIMASI KOCOK ======
+var DATA_NARSUM = [
+  {
+    kicker: "KESAKSIAN NARASUMBER // 01",
+    quote: "“[Kutipan narasumber pertama yang paling kuat ditaruh di sini.]”",
+    cite: "— Nama Narasumber 1, Aktivis Konservasi Satwa Liar",
+    foto: "../Foto/narsum-siluet.svg",
+    alt: "Foto Narasumber 1"
+  },
+  {
+    kicker: "KESAKSIAN NARASUMBER // 02",
+    quote: "“[Kutipan narasumber kedua: misalnya pengakuan soal jalur pengiriman atau pola transaksi media sosial.]”",
+    cite: "— Nama Narasumber 2, Peneliti / Pengamat Perdagangan Satwa",
+    foto: "../Foto/narsum-siluet.svg",
+    alt: "Foto Narasumber 2"
+  },
+  {
+    kicker: "KESAKSIAN NARASUMBER // 03",
+    quote: "“[Kutipan narasumber ketiga: misalnya tanggapan aparat atau petugas karantina/BKSDA.]”",
+    cite: "— Nama Narasumber 3, Pihak Berwenang / BKSDA",
+    foto: "../Foto/narsum-siluet.svg",
+    alt: "Foto Narasumber 3"
+  }
+];
+
+var narsumIndex = 0;
+var narsumBusy = false;
+var narsumDeckWrap = document.querySelector(".narsum-deck-wrap");
+var narsumCardEl = document.getElementById("narsum-card");
+var narsumKickerEl = document.getElementById("narsum-kicker");
+var narsumCounterEl = document.getElementById("narsum-counter");
+var narsumQuoteEl = document.getElementById("narsum-quote");
+var narsumCiteEl = document.getElementById("narsum-cite");
+var narsumPhotoEl = document.getElementById("narsum-photo");
+var narsumPrevBtn = document.getElementById("narsum-prev");
+var narsumNextBtn = document.getElementById("narsum-next");
+
+function updateNarsumContent(idx) {
+  var item = DATA_NARSUM[idx];
+  if (!item) return;
+  if (narsumKickerEl) narsumKickerEl.textContent = item.kicker;
+  if (narsumCounterEl) {
+    narsumCounterEl.textContent =
+      "0" + (idx + 1) + " / 0" + DATA_NARSUM.length;
+  }
+  if (narsumQuoteEl) narsumQuoteEl.textContent = item.quote;
+  if (narsumCiteEl) narsumCiteEl.textContent = item.cite;
+  if (narsumPhotoEl) {
+    narsumPhotoEl.src = item.foto;
+    narsumPhotoEl.alt = item.alt;
+  }
+}
+
+function shuffleNarsum(step) {
+  if (narsumBusy || !narsumCardEl) return;
+  narsumBusy = true;
+
+  if (narsumDeckWrap) narsumDeckWrap.classList.add("is-shuffling");
+  narsumCardEl.classList.remove("shuffling-in");
+  narsumCardEl.classList.add("shuffling-out");
+
+  setTimeout(function () {
+    narsumIndex = (narsumIndex + step + DATA_NARSUM.length) % DATA_NARSUM.length;
+    updateNarsumContent(narsumIndex);
+
+    narsumCardEl.classList.remove("shuffling-out");
+    narsumCardEl.classList.add("shuffling-in");
+
+    setTimeout(function () {
+      narsumCardEl.classList.remove("shuffling-in");
+      if (narsumDeckWrap) narsumDeckWrap.classList.remove("is-shuffling");
+      narsumBusy = false;
+    }, 380);
+  }, 260);
+}
+
+if (narsumNextBtn) {
+  narsumNextBtn.addEventListener("click", function () {
+    shuffleNarsum(1);
+  });
+}
+
+if (narsumPrevBtn) {
+  narsumPrevBtn.addEventListener("click", function () {
+    shuffleNarsum(-1);
+  });
+}
+
+updateNarsumContent(0);
 
 // ====== ANIMASI MUNCUL SAAT DIGULIR ======
 var elemenAnimasi = document.querySelectorAll(

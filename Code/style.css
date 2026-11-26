@@ -110,6 +110,13 @@ body {
   animation: pulse-dot 2s infinite;
 }
 
+.brand-bird-svg {
+  width: 24px;
+  height: 24px;
+  color: var(--accent-crimson-bright);
+  flex-shrink: 0;
+}
+
 .brand-sub {
   color: var(--accent-crimson-bright);
   font-weight: 400;
@@ -780,6 +787,200 @@ body {
   color: #ffffff;
 }
 
+/* ====== BAB 1 SHOWCASE (Senada Tema Investigasi Gelap & Merah) ====== */
+.bab1-blue-band {
+  margin: 2.5rem -6rem 3rem;
+  padding: 2.75rem 2.5rem;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(220, 38, 38, 0.14) 0%, transparent 48%),
+    linear-gradient(135deg, #111116 0%, #181820 55%, #0c0c10 100%);
+  border: 1px solid var(--border-danger);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+
+.bab1-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 2.25rem;
+}
+
+.bab1-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: #fca5a5;
+  background: rgba(220, 38, 38, 0.14);
+  border: 1px solid var(--border-danger);
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.85rem;
+}
+
+.bab1-header h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.35rem);
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+  color: #ffffff;
+}
+
+.bab1-header p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.bab1-split {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.bab1-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bab1-tab {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  text-align: left;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(7, 7, 9, 0.55);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.bab1-tab:hover {
+  background: rgba(24, 24, 32, 0.9);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.bab1-tab.aktif {
+  background: rgba(220, 38, 38, 0.12);
+  border-color: var(--accent-crimson);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.tab-num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fca5a5;
+  background: rgba(220, 38, 38, 0.16);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.bab1-tab.aktif .tab-num {
+  background: var(--accent-crimson);
+  color: #ffffff;
+}
+
+.bab1-tab strong {
+  display: block;
+  font-size: 0.96rem;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+}
+
+.bab1-tab span {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.bab1-mockup {
+  background: #07070a;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mockup-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.mockup-status {
+  color: #fca5a5;
+  background: rgba(220, 38, 38, 0.18);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+}
+
+.mockup-body {
+  padding: 1.15rem 0;
+}
+
+.mockup-body h4 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  margin: 0 0 0.65rem;
+  color: #ffffff;
+}
+
+.mockup-list {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.mockup-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-size: 0.84rem;
+}
+
+.mockup-row .k {
+  font-family: var(--font-mono);
+  color: #fca5a5;
+}
+
+.mockup-row .v {
+  color: var(--text-primary);
+  text-align: right;
+  font-weight: 500;
+}
+
+.mockup-foot {
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
 blockquote {
   margin: 3rem 0;
   padding: 1.5rem 1.75rem;
@@ -799,6 +1000,189 @@ blockquote cite {
   font-size: 0.82rem;
   font-style: normal;
   color: var(--text-secondary);
+}
+
+/* ====== KUTIPAN NARASUMBER ALA TESLA + ANIMASI KOCOK KARTU ====== */
+.narsum-deck-wrap {
+  position: relative;
+  margin: 5.5rem -6rem 5rem;
+}
+
+.narsum-deck-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: #0d0e14;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  transition: transform 0.4s ease;
+}
+
+.narsum-deck-layer.layer-back-2 {
+  transform: translate(-10px, 12px) rotate(-1.6deg);
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.narsum-deck-layer.layer-back-1 {
+  transform: translate(10px, 7px) rotate(1.3deg);
+  opacity: 0.78;
+  z-index: 1;
+}
+
+.narsum-card {
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+  padding: 2.5rem 2.75rem;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 80% 50%, rgba(220, 38, 38, 0.14) 0%, transparent 55%),
+    linear-gradient(135deg, #111218 0%, #191b24 55%, #0c0d12 100%);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  transform-origin: center center;
+}
+
+.narsum-card.shuffling-out {
+  animation: kartu-keluar 0.28s cubic-bezier(0.4, 0, 0.8, 0.6) forwards;
+}
+
+.narsum-card.shuffling-in {
+  animation: kartu-masuk 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.narsum-deck-wrap.is-shuffling .layer-back-1 {
+  transform: translate(-12px, -4px) rotate(-2.2deg);
+}
+
+.narsum-deck-wrap.is-shuffling .layer-back-2 {
+  transform: translate(12px, 10px) rotate(2deg);
+}
+
+@keyframes kartu-keluar {
+  0%   { transform: translateX(0) rotate(0deg) scale(1); opacity: 1; }
+  100% { transform: translateX(-48px) rotate(-4deg) scale(0.95); opacity: 0; }
+}
+
+@keyframes kartu-masuk {
+  0%   { transform: translateX(48px) rotate(3.5deg) scale(0.95); opacity: 0; }
+  100% { transform: translateX(0) rotate(0deg) scale(1); opacity: 1; }
+}
+
+.narsum-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.narsum-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.narsum-kicker {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: #fca5a5;
+}
+
+.narsum-counter {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.narsum-quote {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.7vw, 2.1rem);
+  font-style: italic;
+  line-height: 1.3;
+  color: #ffffff;
+}
+
+.narsum-cite {
+  display: block;
+  margin-top: 1.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-style: normal;
+  color: var(--text-primary);
+}
+
+.narsum-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.narsum-btn {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.55rem 1.05rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.narsum-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.narsum-btn-next {
+  background: var(--accent-crimson);
+  border-color: var(--accent-crimson);
+  color: #ffffff;
+}
+
+.narsum-btn-next:hover {
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.narsum-btn:active {
+  transform: scale(0.97);
+}
+
+.narsum-photo-col {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+}
+
+.narsum-photo {
+  width: 112%;
+  max-width: none;
+  height: 390px;
+  object-fit: cover;
+  margin-top: -4.25rem;
+  margin-bottom: -4.25rem;
+  border-radius: 14px;
+  border: 1px solid rgba(220, 38, 38, 0.35);
+  box-shadow: 0 28px 65px rgba(0, 0, 0, 0.85), 0 0 32px rgba(220, 38, 38, 0.16);
+  display: block;
 }
 
 figure {
@@ -1081,8 +1465,23 @@ footer .catatan {
   .species-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .modal-grid {
+  .modal-grid,
+  .bab1-split,
+  .narsum-grid {
     grid-template-columns: 1fr;
+  }
+  .bab1-blue-band,
+  .narsum-deck-wrap {
+    margin: 2.5rem 0;
+  }
+  .narsum-card {
+    padding: 1.75rem 1.25rem;
+  }
+  .narsum-photo {
+    width: 100%;
+    height: 320px;
+    margin-top: 0;
+    margin-bottom: -2.75rem;
   }
 }
 

@@ -23,6 +23,11 @@
     <div class="topbar-inner">
       <a href="#top" class="brand">
         <span class="brand-dot" aria-hidden="true"></span>
+        <svg class="brand-bird-svg" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <!-- Siluet kepala burung paruh bengkok & jambul -->
+          <path d="M11 8 C13 4 18 3 22 6 C19 6.5 17.5 8 17 9.5 C21 9 25 11.5 26 15 C28.5 15.5 31 18 30.5 22.5 C29.5 20.5 28 19.8 26.5 20.2 C25.5 24 23 27 20 29 L13 31 C13.5 25 12.5 20 11 16.5 C9.5 13 9.5 10 11 8 Z" fill="currentColor" opacity="0.9"/>
+          <circle cx="21" cy="14" r="1.4" fill="#070709"/>
+        </svg>
         <span class="brand-text">PARUH BENGKOK <span class="brand-sub"></span></span>
       </a>
 
@@ -179,11 +184,75 @@
       bahasa promosinya, bagaimana transaksi berlangsung.]
     </p>
 
-    <!-- Kutipan menonjol -->
-    <blockquote>
-      [Kutipan narasumber yang paling kuat ditaruh di sini.]
-      <cite>— Nama narasumber, jabatan/peran</cite>
-    </blockquote>
+    <!-- Bagian Biru ala WooRank ("Boost your sales...") untuk Bab 1 -->
+    <section class="bab1-blue-band" aria-label="Bedah Modus Etalase Media Sosial">
+      <div class="bab1-header">
+        <span class="bab1-badge">REKONSTRUKSI DIGITAL // BAB 1</span>
+        <h3>Menjual Satwa Dilindungi dengan Kecepatan Algoritma</h3>
+        <p>
+          Seperti etalase niaga modern, perdagangan ilegal paruh bengkok di Jabodetabek memanfaatkan dua lapisan taktik digital agar tetap laku sekaligus luput dari deteksi.
+        </p>
+      </div>
+
+      <div class="bab1-split">
+        <div class="bab1-tabs" role="tablist" aria-label="Taktik perdagangan media sosial">
+          <button type="button" class="bab1-tab aktif" role="tab" aria-selected="true" data-bab1-tab="etalase">
+            <span class="tab-num">01</span>
+            <div>
+              <strong>Etalase Grup &amp; Reels</strong>
+              <span>Penawaran visual di grup hobi Facebook dan video singkat Instagram untuk menjaring kolektor urban.</span>
+            </div>
+          </button>
+
+          <button type="button" class="bab1-tab" role="tab" aria-selected="false" data-bab1-tab="sandi">
+            <span class="tab-num">02</span>
+            <div>
+              <strong>Kamus Sandi &amp; Eufemisme</strong>
+              <span>Kata kunci disamarkan ("JK", "mahar", "rawatan") guna mengelabui filter otomatis platform.</span>
+            </div>
+          </button>
+        </div>
+
+        <div class="bab1-mockup" id="bab1-mockup-panel" aria-live="polite">
+          <!-- Diisi otomatis oleh script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Kutipan narasumber (gaya breakout card ala Tesla + tumpukan kartu kocok) -->
+    <section class="narsum-deck-wrap" aria-label="Kutipan Narasumber">
+      <div class="narsum-deck-layer layer-back-2" aria-hidden="true"></div>
+      <div class="narsum-deck-layer layer-back-1" aria-hidden="true"></div>
+
+      <div class="narsum-card" id="narsum-card">
+        <div class="narsum-grid">
+          <div class="narsum-quote-col">
+            <div class="narsum-top-row">
+              <span class="narsum-kicker" id="narsum-kicker">KESAKSIAN NARASUMBER // 01</span>
+              <span class="narsum-counter" id="narsum-counter">01 / 03</span>
+            </div>
+
+            <blockquote class="narsum-quote" id="narsum-quote" aria-live="polite">
+              “[Kutipan narasumber pertama yang paling kuat ditaruh di sini.]”
+            </blockquote>
+            <cite class="narsum-cite" id="narsum-cite">— Nama Narasumber 1, Aktivis Konservasi</cite>
+
+            <div class="narsum-controls">
+              <button type="button" id="narsum-prev" class="narsum-btn" aria-label="Kutipan sebelumnya">
+                ← Sebelumnya
+              </button>
+              <button type="button" id="narsum-next" class="narsum-btn narsum-btn-next" aria-label="Kutipan selanjutnya">
+                Selanjutnya →
+              </button>
+            </div>
+          </div>
+
+          <div class="narsum-photo-col">
+            <img src="../Foto/narsum-siluet.svg" alt="Foto narasumber wawancara investigasi" class="narsum-photo" id="narsum-photo">
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Foto burung paruh bengkok setelah kutipan narasumber -->
     <figure>
